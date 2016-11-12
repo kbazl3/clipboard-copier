@@ -4,9 +4,11 @@ angular.module('app')
         $scope.startFollowUpButton = false
 
         $scope.clearLocalStorage = function() {
-            localStorage.clear();
-            $scope.startFollowUpButton = false;
-            location.reload();
+            if (confirm("Are you sure you want to clear local storage?")) {
+                localStorage.clear();
+                $scope.startFollowUpButton = false;
+                location.reload();
+            }
         }
 
         $scope.followUpInputContainer = true;

@@ -9,6 +9,9 @@
 </head>
 
 <body ng-controller="mainCtrl">
+    <div class="container">
+
+
 
         <button type="button" class="btn-success btn-block" ng-click="startFollowUps()" ng-hide="startFollowUpButton">Start Follow Ups</button>
 
@@ -17,20 +20,17 @@
                 <div class="text-center">
                     <label>Name:</label>
                     <input type="text" name="name" ng-model="nameToCopy1">
-                    <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy1" on-copied="success()" on-error="fail(err)">Copy Name</button>
                 </div>
                 <br>
                 <div class="text-center">
                     <label>Email:</label>
                     <input type="text" name="name" ng-model="emailToCopy1">
-                    <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy1" on-copied="success()" on-error="fail(err)">Copy Email</button>
                 </div>
                 <br>
                 <div class="text-center">
                     <label>Notes:</label>
                     <textarea rows="4" cols="45" ng-model="notesToCopy1">
                     </textarea>
-                    <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy1" on-copied="success()" on-error="fail(err)">Copy Notes</button>
                 </div>
                 <br><br>
                 <button type="button" class="btn-primary btn-block" ng-click="addToFollowups(nameToCopy1, emailToCopy1, notesToCopy1)">Add to Follow-ups</button>
@@ -40,453 +40,34 @@
         </div>
     <br>
     <br>
-    {{followUps}}
     <div ng-repeat="followUp in followUps">
-        <li>Name: {{followUp.name}}</li>
-        <li>Email: {{followUp.email}}</li>
-        <li>Notes: {{followUp.notes}}</li>
+        <div class="container">
+            <div class="formBox well">
+                <div class="text-center">
+                    <label>Name:</label>
+                    <input type="value" name="name" ng-model="followUp.name" value="">
+                    <button class="btn-primary pull-right" clipboard supported="supported" text="followUp.name" on-copied="success()" on-error="fail(err)">Copy Name</button>
+                </div>
+                <br>
+                <div class="text-center">
+                    <label>Email:</label>
+                    <input type="text" name="name" ng-model="followUp.email">
+                    <button class="btn-primary pull-right" clipboard supported="supported" text="followUp.email" on-copied="success()" on-error="fail(err)">Copy Email</button>
+                </div>
+                <br>
+                <div class="text-center">
+                    <label>Notes:</label>
+                    <textarea rows="4" cols="45" ng-model="followUp.notes">
+                    </textarea>
+                    <button class="btn-primary pull-right" clipboard supported="supported" text="followUp.notes" on-copied="success()" on-error="fail(err)">Copy Notes</button>
+                </div>
+
+            </div>
+        </div>
+
         <br>
     </div>
-
-    <!-- <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy2">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy2" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy2">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy2" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy2">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy2" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
     </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy3">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy3" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy3">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy3" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy3">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy3" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy4">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy4" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy4">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy4" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy4">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy4" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy5">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy5" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy5">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy5" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy5">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy5" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy6">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy6" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy6">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy6" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy6">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy6" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy7">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy7" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy7">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy7" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy7">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy7" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy8">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy8" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy8">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy8" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy8">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy8" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy9">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy9" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy9">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy9" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy9">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy9" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy10">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy10" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy10">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy10" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy10">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy10" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy11">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy11" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy11">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy11" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy11">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy11" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy12">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy12" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy12">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy12" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy12">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy12" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy13">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy13" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy13">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy13" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy13">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy13" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy14">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy14" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy14">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy14" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy14">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy14" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy15">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy15" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy15">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy15" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy15">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy15" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy16">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy16" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy16">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy16" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy16">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy16" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy17">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy17" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy17">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy17" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy17">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy17" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy18">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy18" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy18">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy18" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy18">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy18" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy19">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy19" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy19">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy19" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy19">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy19" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br>
-    <div class="formBox well">
-        <div class="text-center">
-            <label>Name:</label>
-            <input type="text" name="name" ng-model="nameToCopy20">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="nameToCopy20" on-copied="success()" on-error="fail(err)">Copy Name</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Email:</label>
-            <input type="text" name="name" ng-model="emailToCopy20">
-            <button class="btn-primary pull-right" clipboard supported="supported" text="emailToCopy20" on-copied="success()" on-error="fail(err)">Copy Email</button>
-        </div>
-        <br>
-        <div class="text-center">
-            <label>Notes:</label>
-            <textarea rows="4" cols="45" ng-model="notesToCopy20">
-                </textarea>
-            <button class="btn-primary pull-right" clipboard supported="supported" text="notesToCopy20" on-copied="success()" on-error="fail(err)">Copy Notes</button>
-        </div>
-
-    </div>
-    <br>
-    <br> -->
-
-
 
 
     <script src="./node_modules/angular/angular.js" charset="utf-8"></script>
