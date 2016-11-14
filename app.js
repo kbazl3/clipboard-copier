@@ -1,1 +1,1 @@
-angular.module("app", ['angular-clipboard']);
+angular.module("app", ['angular-clipboard','toaster']);

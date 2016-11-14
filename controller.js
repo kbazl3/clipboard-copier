@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller("mainCtrl", function($scope) {
+    .controller("mainCtrl", function($scope, toaster) {
         $scope.supported = false;
         $scope.startFollowUpButton = false
 
@@ -8,6 +8,15 @@ angular.module('app')
                 localStorage.clear();
                 $scope.startFollowUpButton = false;
                 location.reload();
+            }
+        }
+        $scope.markAsComplete = function(name) {
+            for (var i = 1; i < $scope.followUps.length; i++) {
+                console.log($scope.followUps[i].name);
+                if (name === $scope.followUps[i].name) {
+                    $scope.followUps[i].name = $scope.followUps[i].name + " COMPLETED"
+                    // console.log("hey");
+                }
             }
         }
 
@@ -39,12 +48,14 @@ angular.module('app')
                 $scope.nameToCopy1 = "";
                 $scope.emailToCopy1 = "";
                 $scope.notesToCopy1 = "";
-                location.reload();
+                $scope.followUps = JSON.parse(localStorage.getItem("session"));
+                toaster.pop('success', "Added follow up for " + name, "");
         }
 
         $scope.followUps = JSON.parse(localStorage.getItem("session"));
 
         $scope.success = function() {
+            toaster.pop('success', "COPIED!!" );
             console.log('Copied!');
         };
 

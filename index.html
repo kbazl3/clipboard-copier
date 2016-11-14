@@ -40,6 +40,7 @@
         </div>
     <br>
     <br>
+    <h2 class="text-center">Follow Ups</h2>
     <div ng-repeat="followUp in followUps">
         <div class="container">
             <div class="formBox well">
@@ -61,19 +62,23 @@
                     </textarea>
                     <button class="btn-primary pull-right" clipboard supported="supported" text="followUp.notes" on-copied="success()" on-error="fail(err)">Copy Notes</button>
                 </div>
-
+                <button type="button" class="btn-danger btn-block" ng-click="markAsComplete(followUp.name)">Mark as complete</button>
             </div>
         </div>
 
         <br>
     </div>
     </div>
+    <toaster-container></toaster-container>
 
 
     <script src="./node_modules/angular/angular.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
     <script src="controller.js" charset="utf-8"></script>
     <script src="./node_modules/angular-clipboard/angular-clipboard.js" charset="utf-8"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.css" rel="stylesheet" />
+<script src="https://code.angularjs.org/1.2.0/angular-animate.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
 </body>
 
 </html>
