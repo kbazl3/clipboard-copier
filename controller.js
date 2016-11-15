@@ -14,8 +14,7 @@ angular.module('app')
             for (var i = 1; i < $scope.followUps.length; i++) {
                 console.log($scope.followUps[i].name);
                 if (name === $scope.followUps[i].name) {
-                    $scope.followUps[i].name = $scope.followUps[i].name + " COMPLETED"
-                    // console.log("hey");
+                    $scope.followUps[i].notes = $scope.followUps[i].notes + " COMPLETED COMPLETED COMPLETED COMPLETED COMPLETED COMPLETED COMPLETED COMPLETED COMPLETED"
                 }
             }
         }
@@ -60,6 +59,7 @@ angular.module('app')
         };
 
         $scope.fail = function(err) {
+            toaster.pop('error', err );
             console.error('Error!', err);
         };
 
