@@ -14,6 +14,7 @@
 
 
         <button type="button" class="btn-success btn-block" ng-click="startFollowUps()" ng-hide="startFollowUpButton">Start Follow Ups</button>
+        <h2>{{numberOfFollowUps}} Follow Ups to do</h2>
 
         <div class="container" ng-hide="followUpInputContainer">
             <div class="formBox well">
@@ -28,22 +29,36 @@
                 </div>
                 <br>
                 <div class="text-center">
+                    <label>Account URL</label>
+                    <input type="text" name="name" ng-model="accountURL">
+                </div>
+                <br>
+                <div class="text-center">
+                    <label>Email Template:</label>
+                    <textarea rows="8" cols="45" ng-model="emailTemplate">
+
+                    </textarea>
+                </div>
+                <br>
+                <div class="text-center">
                     <label>Notes:</label>
-                    <textarea rows="4" cols="45" ng-model="notesToCopy1">
+                    <textarea contenteditable="true" rows="4" cols="45" ng-model="notesToCopy1">
                     </textarea>
                 </div>
                 <br><br>
-                <button type="button" class="btn-primary btn-block" ng-click="addToFollowups(nameToCopy1, emailToCopy1, notesToCopy1)">Add to Follow-ups</button>
+                <button type="button" class="btn-primary btn-block" ng-click="addToFollowups(nameToCopy1, emailToCopy1, accountURL, emailTemplate, notesToCopy1)">Add to Follow-ups</button>
                 <button type="button" class="btn-danger btn-block" ng-click="clearLocalStorage()">Clear Local Storage</button>
 
             </div>
         </div>
     <br>
     <br>
-    <h2 class="text-center">Follow Ups</h2>
+    <h2 class="text-center">Follow Ups To Do</h2>
     <div ng-repeat="followUp in followUps">
         <div class="container">
-            <div class="formBox well">
+
+            <div class="formBox well" style="background-color:{{followUp.color}}">
+                <h4>Call taken {{followUp.time | date : 'short'}}</h4>
                 <div class="text-center">
                     <label>Name:</label>
                     <input type="value" name="name" ng-model="followUp.name" value="">
@@ -57,21 +72,48 @@
                 </div>
                 <br>
                 <div class="text-center">
+                    <label>User Account URL:</label>
+                    <input type="text" name="name" ng-model="followUp.accountURL">
+                    <button class="btn-primary pull-right" clipboard supported="supported" text="followUp.accountURL" on-copied="success()" on-error="fail(err)">Copy User Account URL</button>
+                </div>
+                <br>
+                <div class="text-center">
+                    <label>Email Template:</label>
+                    <textarea rows="8" cols="45" ng-model="followUp.emailTemplate">
+                        This is a test
+                    </textarea>
+                    <button class="btn-primary pull-right" clipboard supported="supported" text="followUp.emailTemplate" on-copied="success()" on-error="fail(err)" >Copy Email Template</button>
+                </div>
+                <br>
+                <div class="text-center">
                     <label>Notes:</label>
                     <textarea rows="4" cols="45" ng-model="followUp.notes">
                     </textarea>
                     <button class="btn-primary pull-right" clipboard supported="supported" text="followUp.notes" on-copied="success()" on-error="fail(err)">Copy Notes</button>
                 </div>
-                <button type="button" class="btn-danger btn-block" ng-click="markAsComplete(followUp.name)">Mark as complete</button>
+                <br>
+                <br>
+                <br>
+                <br>
+                <button type="button" class="btn-danger btn-block" ng-click="markAsComplete(followUp.name)">Mark As Complete</button>
+                <br>
+                <br>
+                <button type="button" class="btn-warning btn-block" ng-click="updateFollowUp(followUp.name, followUp.email, followUp.notes)">Update Follow Up</button>
+                <h4>Completed: {{followUp.completed}}</h4>
+                <br>
+                <br>
+
             </div>
         </div>
-
         <br>
     </div>
+    
     </div>
     <toaster-container></toaster-container>
 
 
+    <!-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=31cwkf4wuqpmbojstkv90pkzq643dqjpg8qivqcoxil5j63s"></script>
+    <script>tinymce.init({ selector:'textarea' });</script> -->
     <script src="./node_modules/angular/angular.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
     <script src="controller.js" charset="utf-8"></script>
