@@ -105,7 +105,7 @@ angular.module('app')
 
         // $scope.completedFollowUps = arrayOfCompletedFollowups;
         // $scope.nonCompletedFollowUps = arrayOfNonCompletedFollowups
-        // console.log(arrayOfNonCompletedFollowups, arrayOfCompletedFollowups);
+        // console.log(arrayOfNonCompletedFollowups, arrayOfCompletedFollowups)
 
 
 
