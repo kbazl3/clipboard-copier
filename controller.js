@@ -3,40 +3,40 @@ angular.module('app')
         $scope.supported = false; //this has something to do with the clipboar copier
         $scope.startFollowUpButton = false //This is the button that initiates 'session' in local storage
         $scope.followUpInputContainer = true; // this input container is hidden until the startFollowUpButton is clicked
-        $scope.emailTemplate = "This is a follow-up to our call earlier. We wanted to make sure all of your needs were taken care of and all of your concerns were addressed. You called Canvas Support today because you were xxxxxxxxxx. To resolve the issue we xxxxxxxxxx.   If you have any additional questions, please give us a call or email us at support@instructure.com. We appreciate your role in making Canvas awesome. :)"
+        $scope.emailTemplate = "This is a follow-up to our call earlier. We wanted to make sure all of your needs were taken care of and all of your concerns were addressed. You called Canvas Support today because you were xxxxxxxxxx. To resolve the issue we xxxxxxxxxx.   If you have any additional questions, please give us a call or email us at support@instructure.com. We appreciate your role in helping make Canvas awesome. :)"
         $scope.followUps = JSON.parse(localStorage.getItem("session"));
         $scope.colorz = "blue";
-        // arrayOfCompletedFollowups = [],
-        // arrayOfNonCompletedFollowups = [];
+
         if (localStorage.getItem('session')) {
             $scope.followUpInputContainer = false;
             $scope.startFollowUpButton = true;
         }
 
         $scope.markAsComplete = function(name) {
-            var a = [];
+            let a = [];
             a = JSON.parse(localStorage.getItem('session'));
-            for (var i = 1; i < a.length; i++) {
+            for (let i = 1; i < a.length; i++) {
                 if (a[i].name === name) {
                     a[i].completed = true;
                     a[i].color = "#FF9999";
                     a.splice(i, 1, a[i]);
                     localStorage.setItem('session', JSON.stringify(a));
-                    //completedFollowUps();
                     location.reload();
                 }
             }
         }
 
-        var completedFollowUps = function() {
-            for (var i = 1; i < followUps.length; i++) {
-                if (followUps[i].completed === true) {
-                    arrayOfCompletedFollowups.push(followUps[i]);
-                } else {
-                    arrayOfNonCompletedFollowups.push(followUps[i]);
-                }
-            }
-        }
+        // var completedFollowUps = function() {
+        //     for (var i = 1; i < followUps.length; i++) {
+        //         if (followUps[i].completed === true) {
+        //             arrayOfCompletedFollowups.push(followUps[i]);
+        //         } else {
+        //             arrayOfNonCompletedFollowups.push(followUps[i]);
+        //         }
+        //     }
+        // }
+
+
 
         $scope.startFollowUps = function() {
             var a = [];
@@ -101,13 +101,6 @@ angular.module('app')
                 location.reload();
             }
         }
-
-
-        // $scope.completedFollowUps = arrayOfCompletedFollowups;
-        // $scope.nonCompletedFollowUps = arrayOfNonCompletedFollowups
-        // console.log(arrayOfNonCompletedFollowups, arrayOfCompletedFollowups)
-
-
 
 
         $scope.success = function() {
